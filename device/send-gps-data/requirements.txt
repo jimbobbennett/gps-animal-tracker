@@ -1,0 +1,4 @@
+azure-iot-device
+pynmea2
+pyserial
+python-dotenv
