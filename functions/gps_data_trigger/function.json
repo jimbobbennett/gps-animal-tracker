@@ -1,0 +1,23 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventHubTrigger",
+      "name": "event",
+      "direction": "in",
+      "eventHubName": "gps-data",
+      "connection": "IOT_HUB_CONNECTION_STRING",
+      "cardinality": "one",
+      "consumerGroup": "functions",
+      "dataType": "binary"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "$return",
+      "databaseName": "animals",
+      "collectionName": "locations",
+      "connectionStringSetting": "COSMOSDB_CONNECTION_STRING"
+    }
+  ]
+}
