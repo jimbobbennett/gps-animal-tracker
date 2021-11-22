@@ -12,7 +12,7 @@ GPS data is received from the sensor over UART as NMEA sentences. You can learn 
 
 This repo has the following code samples in it:
 
-* [`device/print-gps-data`](./device/prine-gps-data) - Code to read NMEA sentences from the GPS sensor print them to the console
+* [`device/print-gps-data`](./device/print-gps-data) - Code to read NMEA sentences from the GPS sensor print them to the console
 * [`device/decode-gps-data`](./device/decode-gps-data) - Code to read NMEA sentences from the GPS sensor and decode them to get latitude and longitude
 * [`device/send-gps-data`](./device/send-gps-data) - Code to read NMEA sentences from the GPS sensor, decode them to get latitude and longitude, then send this to Azure IoT Hub
 * [`functions`](./functions) - An example Azure Functions app that will listen to the events sent to Azure IoT Hub, and use these to build geospatial records that are then saved in CosmosDB
@@ -44,4 +44,7 @@ You will need to set the following in the `local.settings.json` file:
 
 ## Additional resources
 
-You can learn more about IoT, including how to track and manage location data, from [IoT for Beginners, our 24 lesson curriculum all about IoT](https://aka.ms/iot-beginners).
+* You can learn more about IoT, including how to track and manage location data, from [IoT for Beginners, our 24 lesson curriculum all about IoT](https://aka.ms/iot-beginners)
+* If you want to learn more about using Microsoft IoT services, check out these [IoT Learning paths on Microsoft Learn](https://docs.microsoft.com/users/jimbobbennett/collections/ke2ehd351jopwr?WT.mc_id=academic-49550-jabenn)
+* You can plot data using Azure Maps, and to learn more about this check out these [Azure Maps learning paths on Microsoft Learn](https://docs.microsoft.com/users/jimbobbennett/collections/30p0c0mgg2n23g?WT.mc_id=academic-49550-jabenn)
+* If you want to add an industry certification to your resume, check out the [AZ-220 Microsoft Azure IoT developer certification](https://docs.microsoft.com/learn/certifications/exams/az-220?WT.mc_id=academic-49550-jabenn)
