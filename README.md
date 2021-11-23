@@ -44,6 +44,7 @@ You will need to set the following in the `local.settings.json` file:
 
 ## Additional resources
 
+* Learn about Microsoft Project 15 - an IoT solution accelerator for conservation projects in this [Project15 video](https://docs.microsoft.com/shows/Azure-Videos/project-15?WT.mc_id=academic-49550-jabenn)
 * You can learn more about IoT, including how to track and manage location data, from [IoT for Beginners, our 24 lesson curriculum all about IoT](https://aka.ms/iot-beginners)
 * If you want to learn more about using Microsoft IoT services, check out these [IoT Learning paths on Microsoft Learn](https://docs.microsoft.com/users/jimbobbennett/collections/ke2ehd351jopwr?WT.mc_id=academic-49550-jabenn)
 * You can plot data using Azure Maps, and to learn more about this check out these [Azure Maps learning paths on Microsoft Learn](https://docs.microsoft.com/users/jimbobbennett/collections/30p0c0mgg2n23g?WT.mc_id=academic-49550-jabenn)
