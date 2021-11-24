@@ -20,8 +20,8 @@ def flush_serial(serial_conn: serial.Serial) -> None:
     serial_conn.reset_input_buffer()
     serial_conn.flush()
 
-    # Try to read and decode a line. This is needed as the data is utf-8, so can be variale width
-    # and we don't want to read a partial line that starts part-way through a variale width character.
+    # Try to read and decode a line. This is needed as the data is utf-8, so can be variable width
+    # and we don't want to read a partial line that starts part-way through a variable width character.
     # The code here will read until is gets a full line that can be decoded successfully
     read_line = None
     while read_line is None:
@@ -44,5 +44,6 @@ flush_serial(serial_connection)
 # There is no pause here - the application will block whilst waiting for a new line from the serial port
 while True:
     # Read the line of data from the serial connection
-    line = serial_connection.readline().decode('utf-8')
-    print(line.strip())
+    line = serial_connection.readline().decode('utf-8').strip()
+    if line:
+        print(line)
