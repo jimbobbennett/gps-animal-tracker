@@ -40,7 +40,7 @@ serial_connection = serial.Serial('/dev/ttyAMA0', 9600, timeout=1)
 # Clear out any serial data to ensure we are reading full sentences
 flush_serial(serial_connection)
 
-# The main loop of the aplication. Loop forever
+# The main loop of the application. Loop forever
 # There is no pause here - the application will block whilst waiting for a new line from the serial port
 while True:
     # Read the line of data from the serial connection
