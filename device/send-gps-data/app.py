@@ -17,7 +17,7 @@ from typing import NamedTuple
 # https://github.com/microsoft/IoT-For-Beginners/tree/main/3-transport/lessons/1-location-tracking#nmea-gps-data
 import pynmea2
 
-# The pyserial library is used to read serail data over a UART connection to
+# The pyserial library is used to read serial data over a UART connection to
 # the GPS sensor
 import serial
 
@@ -54,14 +54,14 @@ def flush_serial(serial_conn: serial.Serial) -> None:
     serial_conn.reset_input_buffer()
     serial_conn.flush()
 
-    # Try to read and decode a line. This is needed as the data is utf-8, so can be variale width
-    # and we don't want to read a partial line that starts part-way through a variale width character.
+    # Try to read and decode a line. This is needed as the data is utf-8, so can be variable width
+    # and we don't want to read a partial line that starts part-way through a variable width character.
     # The code here will read until is gets a full line that can be decoded successfully
     line = None
-    while line is None:
+    while not line:
         try:
             # Decode the line as utf-8
-            line = serial_conn.readline().decode('utf-8')
+            line = serial_conn.readline().decode('utf-8').strip()
         except UnicodeDecodeError:
             # If we are reading part way through a character, this exception will be thrown.
             # Reset the line and read again
@@ -97,7 +97,7 @@ def get_next_location(serial_conn: serial.Serial) -> LatLon:
     flush_serial(serial_conn)
 
     # Set up a retry count - this code will try 100 times to get a valid
-    # GGA sentence, that is a sentence that has GPS coodinates from multiple
+    # GGA sentence, that is a sentence that has GPS coordinates from multiple
     # satellites
     retry = 0
 
@@ -180,19 +180,19 @@ async def main() -> None:
     # on the /dev/ttyAMA0 port
     serial_connection = serial.Serial('/dev/ttyAMA0', 9600, timeout=1)
 
-    # Clear out any seiral data to ensure we are reading full sentences
+    # Clear out any serial data to ensure we are reading full sentences
     flush_serial(serial_connection)
 
     # Connect this device to Azure IoT Hub
     device_client = await connect_to_iot_hub()
 
-    # The main loop of the aplication. Loop forever
+    # The main loop of the application. Loop forever
     while True:
         # Get the latest GPS coordinates
         lat_lon = get_next_location(serial_connection)
 
         # If there isn't a valid set of coordinates available, the call to get_next_location will
-        # return -999, -999 as the location. Tesetfor this and only proceed if the coordinates are valid
+        # return -999, -999 as the location. Test for this and only proceed if the coordinates are valid
         if lat_lon.lat > -999 and lat_lon.lon > -999:
             # If the coordinates are valid, send the lat and lon as a message to Azure IoT Hub
             await send_message(device_client, lat_lon)
