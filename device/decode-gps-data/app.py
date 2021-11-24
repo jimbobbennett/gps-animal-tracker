@@ -81,8 +81,8 @@ def get_next_location(serial_conn: serial.Serial) -> LatLon:
                 # Use PyNMEA to parse the NMEA sentence from the line of data
                 sentence = pynmea2.parse(line)
             except pynmea2.nmea.ParseError:
-                # If we get a parse error, retry
-                pass
+                # If we get a parse error, read the next line
+                line = serial_conn.readline().decode('utf-8')
 
         # Each sentence has a type specifying the data it has. This code is after a GGA
         # sentence which has the GPS position

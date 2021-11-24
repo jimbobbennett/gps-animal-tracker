@@ -14,12 +14,9 @@ def main(event: func.EventHubEvent) -> func.Document:
     When events are received, they are formatted correctly as geospatial data
     and saved in CosmosDB
     '''
-    # Extract the body from the IoT Hub event
+    # Extract the body from the IoT Hub event, and convert to a JSON object
     body = event.get_body().decode('utf-8')
-
     logging.info('Python EventHub trigger processed an event: %s', body)
-
-    # Convert teh body string to a JSON object
     json_body = json.loads(body)
 
     # Build a JSON document to be stored in CosmosDB
@@ -35,5 +32,4 @@ def main(event: func.EventHubEvent) -> func.Document:
     }
 
     logging.info('Storing record: %s', record)
-
     return func.Document.from_json(json.dumps(record))
